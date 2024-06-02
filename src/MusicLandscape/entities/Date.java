@@ -5,7 +5,9 @@
 //         stage = ES04
 //
 // ***************************************************
-package MusicLandscape;
+package MusicLandscape.entities;
+
+import MusicLandscape.util.ConsoleScanable;
 
 import java.util.Scanner;
 
@@ -17,14 +19,8 @@ import java.util.Scanner;
  * @Stage ES04
  *
  */
-public class Date implements  java.lang.Comparable<Date>
-
-
-, MusicLandscape.util.ConsoleScanable
-
-
+public class Date implements Comparable<Date>, ConsoleScanable
 {
-
 	private int y = 1970, m = 01, d = 01;
 
 	/**
@@ -369,12 +365,10 @@ public class Date implements  java.lang.Comparable<Date>
 	}
 
 	/**
-	 * 
 	 * @return true if this date was modified during the operation, false otherwise
 	 */
 	
 	@Override
-	
 	public boolean scan() {
 		Scanner sc = new Scanner(System.in);
 		

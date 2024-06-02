@@ -1,6 +1,10 @@
 package MusicLandscape.entities;
 
-public class Track {
+import MusicLandscape.util.ConsoleScanable;
+
+import java.util.Scanner;
+
+public class Track implements ConsoleScanable {
     private String title;
     private int duration;
     private Artist writer = new MusicLandscape.entities.Artist();
@@ -173,6 +177,49 @@ public class Track {
     @Override
     public String toString() {
         return getString();
+    }
+
+
+    @Override
+    public boolean scan() {
+        boolean objectChanged = false;
+
+        // Scanning title
+        String newTitle = scanField("title", this.title);
+        if (newTitle != null) {
+            setTitle(newTitle);
+            objectChanged = true;
+        }
+
+        // Scanning duration
+        String newDuration = scanField("duration", String.valueOf(this.duration));
+        if (newDuration != null) {
+            try {
+                int duration = Integer.parseInt(newDuration);
+                setDuration(duration);
+                objectChanged = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for duration. Please enter a valid integer.");
+            }
+        }
+
+        return objectChanged;
+    }
+
+    private String scanField(String fieldName, String currentValue) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.printf("current %s: %s\n", fieldName, currentValue);
+        System.out.printf("enter new %s (leave empty to keep):", fieldName);
+        String input = scanner.nextLine();
+
+        scanner.close(); // Close the scanner
+
+        if (input.isEmpty()) {
+            return null; // Keep old value
+        } else {
+            return input;
+        }
     }
 }
 

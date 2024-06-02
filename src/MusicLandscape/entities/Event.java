@@ -1,5 +1,9 @@
 package MusicLandscape.entities;
 
+import MusicLandscape.Venue;
+
+import java.util.Date;
+
 public class Event {
     private Artist artist;
     private int attendees;
@@ -15,7 +19,7 @@ public class Event {
     public Event (Event e){
         this.artist = new Artist(e.getArtist());
         this.attendees = e.getAttendees();
-        this.date = new Date(e.getDate());
+        this.date = new Date(e.getDate().getTime());
         this.description = e.getDescription();
         this.venue = new Venue(e.getVenue());
     }
@@ -38,12 +42,12 @@ public class Event {
         if(date == null){
             return null;
         }else {
-            return new Date(date);
+            return new Date(date.getTime());
         }
     }
     public void setDate(Date date) {
         if(date != null) {
-            this.date = new Date(date);
+            this.date = new Date(date.getTime());
         }
         else{
             this.date = null;
