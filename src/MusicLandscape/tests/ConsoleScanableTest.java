@@ -6,18 +6,16 @@
 //
 // ***************************************************
 package MusicLandscape.tests;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import MusicLandscape.entities.Track;
 import MusicLandscape.util.ConsoleScanable;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.io.ByteArrayInputStream;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
 /**
  * 

@@ -12,8 +12,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import MusicLandscape.Date;
 import MusicLandscape.entities.*;
+import java.util.Date;
 import MusicLandscape.util.comparators.*;
 
 
