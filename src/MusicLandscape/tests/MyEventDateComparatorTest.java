@@ -6,20 +6,21 @@
 //
 // ***************************************************
 package MusicLandscape.tests;
+
+import MusicLandscape.entities.Event;
+import MusicLandscape.util.comparators.MyEventDateComparator;
+import org.testng.annotations.Test;
+
+import java.util.Date;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertTrue;
 
-import org.testng.annotations.Test;
-
-import MusicLandscape.entities.*;
-import java.util.Date;
-import MusicLandscape.util.comparators.*;
-
 
 /**
- * 
- * 
+ *
+ *
  * @author TeM
  * @version 234
  * @Stage ES04
@@ -27,93 +28,93 @@ import MusicLandscape.util.comparators.*;
  */
 public class MyEventDateComparatorTest {
 
-  @Test
-  public void compareEventNull() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+	@Test
+	public void compareEventNull() {
+		MyEventDateComparator comp= new MyEventDateComparator();
 
-	  Event left= null;
-	  Event right= null;
-	  
-	    
-	  int res=comp.compare(left, right);
-	  
-	  assertTrue(res == 0, "both should be equal");
-  }
-  
-  @Test
-  public void compareNullEventLeft() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+		Event left= null;
+		Event right= null;
 
-	  Event left= null;
-	  Event right= mock(Event.class);
-	    
-	  int res=comp.compare(left, right);
-	  assertTrue(res <0, "first should be smaller than second");
-  }
-  @Test
-  public void compareNullEventRight() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
 
-	  Event right= null;
-	  Event left= mock(Event.class);
-	    
-	  int res=comp.compare(left, right);
-	  assertTrue(res >0, "first should be bigger than second");
-  }
-  
-  
-  @Test
-  public void compareDateNull() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+		int res=comp.compare(left, right);
 
-	  Event left= mock(Event.class);
-	  Event right= mock(Event.class);
-	  when(left.getDate()).thenReturn(null);
-	  when(right.getDate()).thenReturn(null);
-	    
-	  int res=comp.compare(left, right);
-	  
-	  assertTrue(res == 0, "both are equal");
-  }
-  
-  @Test
-  public void compareNullDateLeft() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+		assertTrue(res == 0, "both should be equal");
+	}
 
-	  Event left= mock(Event.class);
-	  Event right= mock(Event.class);
-	  when(left.getDate()).thenReturn(null);
-	  when(right.getDate()).thenReturn(new Date());
-	    
-	  int res=comp.compare(left, right);
-	  assertTrue(res <0, "first should be smaller than second");
-  }
-  @Test
-  public void compareNullDateRight() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+	@Test
+	public void compareNullEventLeft() {
+		MyEventDateComparator comp= new MyEventDateComparator();
 
-	  Event left= mock(Event.class);
-	  Event right= mock(Event.class);
-	  when(left.getDate()).thenReturn(new Date());
-	  when(right.getDate()).thenReturn(null);
-	    
-	    
-	  int res=comp.compare(left, right);
-	  assertTrue(res >0, "first should be bigger than second");
-  }
-  
-  @Test
-  public void compareDate() {
-	  MyEventDateComparator comp= new MyEventDateComparator();
+		Event left= null;
+		Event right= mock(Event.class);
 
-	  Event left= mock(Event.class);
-	  Event right= mock(Event.class);
-	  when(left.getDate()).thenReturn(new Date());
-	  when(right.getDate()).thenReturn(new Date());
-	    
-	    
-	  int res=comp.compare(left, right);
-	  assertTrue(res == 0, "both should be equal");
-  }
-  
+		int res=comp.compare(left, right);
+		assertTrue(res <0, "first should be smaller than second");
+	}
+	@Test
+	public void compareNullEventRight() {
+		MyEventDateComparator comp= new MyEventDateComparator();
+
+		Event right= null;
+		Event left= mock(Event.class);
+
+		int res=comp.compare(left, right);
+		assertTrue(res >0, "first should be bigger than second");
+	}
+
+
+	@Test
+	public void compareDateNull() {
+		MyEventDateComparator comp= new MyEventDateComparator();
+
+		Event left= mock(Event.class);
+		Event right= mock(Event.class);
+		when(left.getDate()).thenReturn(null);
+		when(right.getDate()).thenReturn(null);
+
+		int res=comp.compare(left, right);
+
+		assertTrue(res == 0, "both are equal");
+	}
+
+	@Test
+	public void compareNullDateLeft() {
+		MyEventDateComparator comp= new MyEventDateComparator();
+
+		Event left= mock(Event.class);
+		Event right= mock(Event.class);
+		when(left.getDate()).thenReturn(null);
+		when(right.getDate()).thenReturn(new Date());
+
+		int res=comp.compare(left, right);
+		assertTrue(res <0, "first should be smaller than second");
+	}
+	@Test
+	public void compareNullDateRight() {
+		MyEventDateComparator comp= new MyEventDateComparator();
+
+		Event left= mock(Event.class);
+		Event right= mock(Event.class);
+		when(left.getDate()).thenReturn(new Date());
+		when(right.getDate()).thenReturn(null);
+
+
+		int res=comp.compare(left, right);
+		assertTrue(res >0, "first should be bigger than second");
+	}
+
+	@Test
+	public void compareDate() {
+		MyEventDateComparator comp= new MyEventDateComparator();
+
+		Event left= mock(Event.class);
+		Event right= mock(Event.class);
+		when(left.getDate()).thenReturn(new Date());
+		when(right.getDate()).thenReturn(new Date());
+
+
+		int res=comp.compare(left, right);
+		assertTrue(res == 0, "both should be equal");
+	}
+
 }

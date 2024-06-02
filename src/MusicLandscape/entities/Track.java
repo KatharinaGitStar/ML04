@@ -182,44 +182,45 @@ public class Track implements ConsoleScanable {
 
     @Override
     public boolean scan() {
+        Scanner scanner = new Scanner(System.in);
         boolean objectChanged = false;
 
-        // Scanning title
-        String newTitle = scanField("title", this.title);
-        if (newTitle != null) {
-            setTitle(newTitle);
-            objectChanged = true;
-        }
-
-        // Scanning duration
-        String newDuration = scanField("duration", String.valueOf(this.duration));
-        if (newDuration != null) {
-            try {
-                int duration = Integer.parseInt(newDuration);
-                setDuration(duration);
+        //Scan title
+        while (true) {
+            System.out.print("Title (" + title + "): ");
+            String input = scanner.nextLine().trim();
+            if (!input.isEmpty()) {
+                title = input;
                 objectChanged = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input for duration. Please enter a valid integer.");
+                break;
+            } else {
+                System.out.println("Title unchanged.");
+                break;
             }
         }
-
-        return objectChanged;
-    }
-
-    private String scanField(String fieldName, String currentValue) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.printf("current %s: %s\n", fieldName, currentValue);
-        System.out.printf("enter new %s (leave empty to keep):", fieldName);
-        String input = scanner.nextLine();
-
-        scanner.close(); // Close the scanner
-
-        if (input.isEmpty()) {
-            return null; // Keep old value
-        } else {
-            return input;
+        //Scan duration
+        while (true) {
+            System.out.print("Duration (" + duration + " seconds): ");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Duration unchanged.");
+                break; // Keep the old value
+            }
+            try {
+                int newDuration = Integer.parseInt(input);
+                if (newDuration > 0) {
+                    duration = newDuration;
+                    objectChanged = true;
+                    break;
+                } else {
+                    System.out.println("Duration must be positive.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid duration in seconds.");
+            }
         }
+        System.out.println("Track details updated.");
+        return objectChanged;
     }
 }
 

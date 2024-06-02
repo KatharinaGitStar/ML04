@@ -24,13 +24,10 @@ import MusicLandscape.entities.Track;
 public abstract class MyTrackFormatter {
 	/**
 	 * Creates a String representation for a Track.
-	 * 
-	 * @param t
-	 * 		the track to be formatted
-	 * @return
-	 * 		the formatted String representing the track
+	 *
+	 * @param t the track to be formatted
+	 * @return the formatted String representing the track
 	 * @ProgrammingProblem.Aspect abstract method
-	 * 
 	 */
 	public abstract String format(Track t);
 }

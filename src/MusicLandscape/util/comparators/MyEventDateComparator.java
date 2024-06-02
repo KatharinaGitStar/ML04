@@ -1,9 +1,6 @@
 package MusicLandscape.util.comparators;
 
 import MusicLandscape.entities.Event;
-import java.util.Comparator;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MyEventDateComparator extends MyEventComparator {
 
@@ -11,17 +8,31 @@ public class MyEventDateComparator extends MyEventComparator {
     public int compare(Event e1, Event e2) {
         //compares 2 events by date; handles null arguments, a null event is always smaller
         //than any non-null event.
-        SimpleDateFormat d1 = new SimpleDateFormat("dd.MM.yyyy");
-        SimpleDateFormat d2 = new SimpleDateFormat("dd.MM.yyyy");
-
-        Date date1 = e1.getDate();
-        Date date2 = e2.getDate();
-
-        if(date1 == null && date2 == null) {
-            return 0;
+        if (e1 == null && e2 == null) {
+            return 0; // Both are null, they are equal
         }
-        else {
-            return date1.compareTo(date2);
+        else if (e1 == null && e2 != null) {
+            return -1; // e1 is null and e2 is not null, e1 is smaller
+        }
+        else if (e2 == null && e1 != null) {
+            return 1; // e2 is null and e1 is not null, e2 is smaller
+        }
+        // Both e1 and e2 are not null, so compare their dates
+        else if (e1.getDate() == null && e2.getDate() == null) {
+            return 0; // Both dates are null
+        }
+        else if (e1.getDate() == null) {
+            return -1; // e1's date is null and e2's date is not null, e1's date is considered smaller
+        }
+        else if (e2.getDate() == null) {
+            return 1; // e2's date is null and e1's date is not null, e2's date is considered smaller
+        }
+        else if(e1.getDate().equals(e2.getDate())){
+            return 1;
+        }
+        else
+        {   // Use compareTo to compare the dates
+            return e1.getDate().compareTo(e2.getDate());
         }
     }
 }

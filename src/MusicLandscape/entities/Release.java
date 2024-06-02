@@ -22,12 +22,7 @@ public abstract class Release {
     }
 
     public String getTitle(){
-        if(title == null){
-            return "unknown";
-        }
-        else {
-            return title;
-        }
+        return title;
     }
     public void setTitle(String title){
         this.title = title;
@@ -56,7 +51,8 @@ public abstract class Release {
         //string representation is: title-artist-year-total time; unknown field are represented with unknown
         String strtitle = title == null ? "unknown" : title;
         String stryear = year == 0 ? "unknown" : Integer.toString(year);
-        return String.format("%s-%s-%s-%d", strtitle, artist, stryear, totalTime());
+        String strtotalTime = totalTime() == 0 ? "0" : String.format("%02d", totalTime());
+        return String.format("%s-%s-%s-%s", strtitle, artist, stryear, strtotalTime);
     }
 }
 

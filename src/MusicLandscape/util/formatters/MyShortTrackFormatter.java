@@ -24,12 +24,11 @@ public class MyShortTrackFormatter extends MyTrackFormatter {
 
 	/**
 	 * Creates a short format of a track.<br>
-	 * 
+	 * <p>
 	 * The short representation of a track is
 	 * "title" "performer"
 	 * (without quotes)
 	 * Both title, and performer are exactly ten characters wide with leading blanks (if any).
-	 * 
 	 */
 	@Override
 	public String format(Track t) {

@@ -120,10 +120,9 @@ public class Album extends Release {
         sb.append("\n[");
         TrackListItem current = trackListHead;
         while (current != null) {
-            sb.append("[").append(current.track.toString()).append("]");
-            if (current.next != null) {
-                sb.append(", ");
-            }
+            // Extract the track title from the full track string representation
+            String trackTitle = current.track.getTitle();
+            sb.append("[").append(trackTitle).append("]");
             current = current.next;
         }
         sb.append("]");

@@ -13,11 +13,11 @@ public class MusicVideo extends Release {
         this.track = track;
     }
     public int totalTime(){
-        return track.getDuration();
+        return (track == null) ? 0 : track.getDuration();
     }
+    @Override
     public String toString(){
         //adds -Video to the string representation of a general release
-        String baseString = super.toString();
-        return String.format("%s-%s", baseString, new MusicVideo());
+        return (super.toString() + "-(Video)");
     }
 }
