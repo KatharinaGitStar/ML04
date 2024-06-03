@@ -30,8 +30,7 @@ public class MyEventDateComparator extends MyEventComparator {
             Date date2 = e2.getDate();
             Date normalizedDate1 = normalizeDate(date1);
             Date normalizedDate2 = normalizeDate(date2);
-            int result = normalizedDate1.compareTo(normalizedDate2);
-            return result;
+            return  normalizedDate1.compareTo(normalizedDate2);
         }
     }
 
